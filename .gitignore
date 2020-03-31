@@ -1,0 +1,6 @@
+__pycache__
+.vscode
+ner parsing resources/ner-model-2018.12.18.tar.gz
+oie parsing resources/openie-model.2018-08-20.tar.gz
+constituency parsing resources/elmo-constituency-parser-2018.03.14.tar.gz
+dependency parsing resources/biaffine-dependency-parser-ptb-2018.08.23.tar.gz
