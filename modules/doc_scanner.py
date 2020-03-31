@@ -36,7 +36,7 @@ if __name__ == '__main__':
                 doc2 = nlp(article_text["content"])
                 if doc2.vector_norm:
                     similarity_value = doc1.similarity(doc2)
-                    if check_trusted(article_text["source"]) and similarity_value >= 0.9:
+                    if check_trusted(article_text["source"]) and similarity_value >= 0.95:
                         is_fact = True
         
                     if similarity_value >= 0.96:
@@ -51,9 +51,12 @@ if __name__ == '__main__':
         print("\n")
         if is_fact:
             print(headline["sentence"]+" is FACT - "+str(headline["truth_flag"]))
-            count_facts_found += 1     
+            count_facts_found += 1 
+            if str(headline["truth_flag"]) == "0":
+                fake_truths += 1
+                count_facts_found -= 1    
 
-        elif good_sites_nr >= (total_sites_nr/2) and is_fact == False:
+        elif good_sites_nr >= (total_sites_nr/2) and is_fact == False and good_sites_nr > 0:
             print(headline["sentence"]+" is FACT - "+str(headline["truth_flag"]))
             count_facts_found += 1
             if str(headline["truth_flag"]) == "0":
