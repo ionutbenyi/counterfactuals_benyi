@@ -74,7 +74,6 @@ def check_articles(keyword_sentence, original_sentence):
                             article_text += row_text
                         article_text = article_text.replace("\n\n\n\n","\n")
                     total_sites_nr += 1
-
                     articles.append({"source":uls[i], "content":article_text})
                     print(uls[i])
         except:

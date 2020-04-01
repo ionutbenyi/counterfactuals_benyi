@@ -40,7 +40,7 @@ if __name__ == '__main__':
                 doc2 = nlp(article_text["content"])
                 if doc2.vector_norm:
                     similarity_value = doc1.similarity(doc2)
-                    if check_trusted(article_text["source"]) and similarity_value >= 0.924:
+                    if check_trusted(article_text["source"]) and similarity_value >= 0.95:
                         is_fact = True
                         good_sites_nr += 1
         
