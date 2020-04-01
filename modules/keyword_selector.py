@@ -29,7 +29,7 @@ if __name__ == '__main__':
     simple_gradient = SimpleGradient(pred)
 
     count = 0
-    for i in range(40):
+    for i in range(100):
     #for input_json in input_train_data:
 
         input_json = input_train_data[i]
