@@ -6,9 +6,9 @@ class WebScraper:
         url_list = search(query,        # The query you want to run
                 tld = 'co.in',  # The top level domain
                 lang = 'en',  # The language
-                num = 7,     # Number of results per page
+                num = 10,     # Number of results per page
                 start = 0,    # First result to retrieve
-                stop = 7,  # Last result to retrieve
+                stop = 10,  # Last result to retrieve
                 pause = 0.1,  # Lapse between HTTP requests
                )
         return url_list
