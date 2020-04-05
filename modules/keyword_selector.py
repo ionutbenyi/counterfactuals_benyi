@@ -29,7 +29,7 @@ if __name__ == '__main__':
     simple_gradient = SimpleGradient(pred)
 
     count = 0
-    for i in range(100):
+    for i in range(103):
     #for input_json in input_train_data:
 
         input_json = input_train_data[i]
@@ -41,7 +41,7 @@ if __name__ == '__main__':
             search_strings.append({"search": input_json["sentence"], "original": input_json["sentence"], "truth_flag": input_json["truth_flag"]})
         else:
             #set treshold for keywords
-            treshold = 0.009
+            treshold = 0.01
 
             #words_list = re.split(r'[\',.\s]\s*', input_json["sentence"])
             words_list = input_json["sentence"].split()

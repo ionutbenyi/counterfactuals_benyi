@@ -1,7 +1,7 @@
 sentenceID,gold_label,sentence
-100000,1,"Goodfellow's theory has been questioned, however, because the plane made two other sharp turns that would've been impossible if the pilots were unconscious."
-100001,1,"However, both campaigners and pro-People's Vote MPs say that this number would be grow significantly if there were no other viable means of avoiding leaving the EU without a Withdrawal Agreement."
-100002,1,Things could have been even better if the whole chip industry wasn't constrained by chip foundries such as Taiwan Semiconductor Manufacturing (NYSE: TSM) and United Microelectronics getting swamped under more orders than they can handle.
+100000,0,"Goodfellow's theory has been questioned, however, because the plane made two other sharp turns that would've been impossible if the pilots were unconscious."
+100001,0,"However, both campaigners and pro-People's Vote MPs say that this number would be grow significantly if there were no other viable means of avoiding leaving the EU without a Withdrawal Agreement."
+100002,0,Things could have been even better if the whole chip industry wasn't constrained by chip foundries such as Taiwan Semiconductor Manufacturing (NYSE: TSM) and United Microelectronics getting swamped under more orders than they can handle.
 100003,1,"The new request, if approved, would keep the military forces on the border through Jan."
 100004,0,"Companies in financial difficulty can currently only negotiate down wages and conditions to below those established by the collective bargaining procedure if they have the approval of unions, which is rarely given."
 100005,0,"If needed, I would like to have the right to try."
@@ -76,13 +76,13 @@ sentenceID,gold_label,sentence
 100074,0,"While the reasons for the decline in contributions are unclear, ""one of the things to consider is that these plans have been around for a while now and at some point people may stop contributing if they've built up an account balance,"" says Paul Fronstin, director of EBRI's health research and education program."
 100075,0,"No matter what side of the debate one gravitates toward, stories like Ms. Serrano-Hernandez's highlight the moral quagmire that we've created by treating the migration of desperately poor people as a problem that can best be addressed by border walls, tear gas, detention camps, militarized policing and mass deportation - except, of course, for the relative few, truly ""deserving"" individuals who may be granted legal citizenship (typically after years of waiting and hundreds or thousands of dollars in attorney's fees) if they can win asylum.."
 100076,0,"But even if Mr Kwasniewski has many of the qualities needed for leading a new centre-left party, his communist past would handicap him."
-100077,1,"If all of the candidates arrayed against him could have thrown their collective support behind one of their group, that man would have won the nomination."
+100077,0,"If all of the candidates arrayed against him could have thrown their collective support behind one of their group, that man would have won the nomination."
 100078,0,The leak could have been stopped the same hour it was discovered if the well had a working shut-off valve.
 100079,1,"""If the test is positive, then we would do more testing to find out for sure if there is a risk for cervical cancer or not,"" Dr. Long says.."
 100080,1,"But even if that happened, it would not occur before Tuesday's hearing, ""so there is no reason on that account for Mr. Shkreli to appear"" at it, Weiss wrote in the letter.."
 100081,0,"I wouldn't be surprised, if sales weakened dramatically in the next month or two, if Congress does decide to extend it -- it's been one of the more effective stimulus efforts."
 100082,0,"In high school, Cynthia fell in love with engineering and came to accept unquestioningly the American precept that if she studied hard and did well, there wasn't any reason she couldn't become an engineer."
-100083,1,"The second is that even if parliament was suspended, MPs would simply jump on the next piece of legislation that appeared before them when they returned and amend it to have the same effect as Cooper's bill."
+100083,0,"The second is that even if parliament was suspended, MPs would simply jump on the next piece of legislation that appeared before them when they returned and amend it to have the same effect as Cooper's bill."
 100084,0,"Bushs final NATO ambassador and Mr Obamas first, suggests thatdespite Mr Obamas distrust of military forcehe would still act if there were a loud enough domestic outcry."
 100085,0,"Shares of Netgear (NASDAQ:NTGR) may have fallen 8% Thursday after the company released third-quarter 2016 results, but that doesn't mean investors should be disappointed with its performance."
 100086,0,And it would face a potential Trump veto if it did so.
@@ -90,15 +90,15 @@ sentenceID,gold_label,sentence
 100088,0,It is an approach that may have found its moment.
 100089,1,A provider may not disclose such information if the patient objects and is not incapacitated.
 100090,0,A provision in the Affordable Care Act allows states to replace traditional Medicaid and the Obamacare insurance marketplaces with a different system if it can be demonstrated that the plan would cover a similar number of people at a similar cost.
-100091,1,"If the pretence that it will proceed continues, the risks of quite unnecessary damage to relations with China can only grow."
+100091,0,"If the pretence that it will proceed continues, the risks of quite unnecessary damage to relations with China can only grow."
 100092,1,"""The FOMC can provide more current stimulus if people believe that liftoff will be triggered by a lower unemployment rate."" The U.S."
 100093,1,"However, Moody's said it believed SocGen has a level of capital that can absorb potential losses it is likely to incur on its Greek government bonds and to remain capitalized at a level consistent with its BFSR even if the creditworthiness of Irish and Portuguese government bonds were to deteriorate further."
 100094,0,"In the past, I should have tried to talk him out of it as though my life had depended on it."
 100095,0,"While Brown's reluctance to back Obama in 2012 and refusal to side with Charlie Crist in last year's gubernatorial contest could have earned him some crossover support, there's a real chance it will depress base turnout when all is said and done."
 100096,0,"- OBAMA WEIGHS IN, SAYS IT'S 'POSSIBLE' ATTACK WAS TERRORISM, via our colleagues Sarah Wheaton and Nick Gass: ""The mass shooting in San Bernardino, California, may have been terrorist-related, President Barack Obama said Thursday, while cautioning that it"
 100097,0,"""If the administration is already vulnerable to this issue because of some of the comments the president has made, that also might be a reason you think the administration might try to take actions to pre-empt those kinds of attacks,"" Professor Adler said."
-100098,1,"Its stock price would likely fall if the Israeli group's approach were to fail, leading to a corresponding decline in its offer for Perrigo."
-100099,0,"With the Dow well above the 12,000 mark again but the threat of a double-dip recession still present, it would do investors well to consider the effect a renewed downturn might have on our portfolios."
+100098,0,"Its stock price would likely fall if the Israeli group's approach were to fail, leading to a corresponding decline in its offer for Perrigo."
+100099,1,"With the Dow well above the 12,000 mark again but the threat of a double-dip recession still present, it would do investors well to consider the effect a renewed downturn might have on our portfolios."
 100100,1,"Ms. Sinema, a former congresswoman who voted with Mr. Trump more than half the time, ran a uniquely Arizonan campaign, presenting herself as an independent voice for the state and saying she wouldn't support the Senate minority leader, Chuck Schumer, if she won."
 100101,0,Ceramides can also kill cells if their levels become high and can bring on inflammatory responses.
 100102,0,"Instead, large-scale demonstration programs could be crafted to test the viability of risk-sharing and what influence it would have on the overall costs and on what level premiums must be set to keep a Medicare drug program financially sound."

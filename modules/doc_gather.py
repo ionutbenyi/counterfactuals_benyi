@@ -38,7 +38,8 @@ def check_articles(keyword_sentence, original_sentence):
     uls=[]
     url_list = link_scraper.search_for_link(keyword_sentence)
     for u in url_list:
-        uls.append(u)
+        if u[-4:] != '.pdf':
+            uls.append(u)
     
     # print(uls)
     articles = []
@@ -47,7 +48,6 @@ def check_articles(keyword_sentence, original_sentence):
         article_text=""
         try:
             r=None
-            print(uls[i])
             try:
                 r = requests.get(uls[i], timeout = 2)
             except Timeout:
