@@ -49,7 +49,7 @@ def check_articles(keyword_sentence, original_sentence):
         try:
             r=None
             try:
-                r = requests.get(uls[i], timeout = 2)
+                r = requests.get(uls[i])
             except Timeout:
                 print('The request timed out')
                 continue

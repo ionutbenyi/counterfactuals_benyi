@@ -2,11 +2,13 @@
 import json
 import math
 
+# 'https://www.economist.com/',
+
 from modules.similarity_checker import *
 
 trusted_sites = ['.reuters.', 'https://www.nytimes.com/', 
 'https://www.bbc.com/', 'https://www.ft.com/',
-'https://www.economist.com/', 'https://www.theguardian.com/', 
+ 'https://www.theguardian.com/', 
 'https://www.dailymail.co.uk/', 'https://time.com/', 'medcitynews.com', 'books.google.']
 
 def check_trusted(site):
@@ -36,19 +38,21 @@ if __name__ == '__main__':
         for article_text in headline["texts"]:
             total_sites_nr += 1
             similarity_value = 0
-            if len(article_text["content"]) < 1000000:
+            # if len(article_text["content"]) < 1000000:
                 
-                similarity_value = bert_sim_checker.check_news_similarity(article_text["content"], headline["sentence"])
+            similarity_value = bert_sim_checker.check_news_similarity(article_text["content"], headline["sentence"])
 
-                if check_trusted(article_text["source"]) and headline["sentence"] in article_text["content"]:
-                    is_fact = True
+            if check_trusted(article_text["source"]) and headline["sentence"] in article_text["content"]:
+                is_fact = True
 
-                if check_trusted(article_text["source"]) and similarity_value >= 0.66:
-                    is_fact = True
-                    good_sites_nr += 1
+            if check_trusted(article_text["source"]) and similarity_value >= 0.7:
+                is_fact = True
+                
+            elif check_trusted(article_text["source"]) and similarity_value >= 0.6:
+                good_sites_nr += 1
 
-                if similarity_value > 0.7 and is_fact == False:
-                    good_sites_nr += 1
+            if similarity_value > 0.66 and is_fact == False:
+                good_sites_nr += 1
             print("SIMILARITY = "+str(similarity_value)+" - "+str(article_text["source"]))
 
         if headline["truth_flag"] == "0":

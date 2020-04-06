@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import html2text
 from requests.exceptions import Timeout
 
+from modules.web_scraper import WebScraper
+
     # Similarity: sm model: 0.6 - good for facts; good for counterfacts = ?
     #             lg model: ?
 import json
@@ -39,9 +41,13 @@ def check_articles(url):
 
         try:
             encd = get_encoding(soup)
-            # print(encd)
+            
         except:
+            print("cannot get enc")
             encd = ""
+        
+        print("enc: "+ str(encd))
+
         if encd == 'utf-8' or encd == 'UTF-8' or encd == "":
             table = soup.findAll('p', attrs={})
             h = html2text.HTML2Text()
@@ -60,8 +66,10 @@ def check_articles(url):
     return article_text
 
 if __name__ == '__main__':
-    url = 'https://www.bbc.com/news/blogs-echochambers-26640114'
+    url = 'https://www.reuters.com/article/usa-fed-idCNL1E8KKCV320120921'
     art = check_articles(url)
+    
     print(art)
+ 
 
 
