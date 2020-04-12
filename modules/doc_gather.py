@@ -4,8 +4,6 @@ from bs4 import BeautifulSoup
 import html2text
 from requests.exceptions import Timeout
 
-    # Similarity: sm model: 0.6 - good for facts; good for counterfacts = ?
-    #             lg model: ?
 import json
 import re
 def remove_tags(tag_name, soup):
@@ -43,7 +41,7 @@ def check_articles(keyword_sentence, original_sentence):
     
     # print(uls)
     articles = []
-    print(original_sentence)
+    print(keyword_sentence)
     for i in range(len(uls)):
         article_text=""
         try:

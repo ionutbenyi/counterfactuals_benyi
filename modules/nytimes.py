@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import html2text
 from requests.exceptions import Timeout
+from modules.web_scraper import WebScraper
 
 from modules.web_scraper import WebScraper
 
@@ -67,9 +68,12 @@ def check_articles(url):
 
 if __name__ == '__main__':
     url = 'https://www.reuters.com/article/usa-fed-idCNL1E8KKCV320120921'
-    art = check_articles(url)
-    
-    print(art)
- 
+    # art = check_articles(url)
+    # print(art)
+
+    ws = WebScraper()
+    ls = ws.search_for_link('But even if that happened, it would not occur before Tuesday\'s hearing, "so there is no reason on that account for Mr. Shkreli to appear\" at it, Weiss wrote in the letter..')
+    for l in ls:
+        print(l)
 
 
