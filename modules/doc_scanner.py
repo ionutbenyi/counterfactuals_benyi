@@ -53,12 +53,14 @@ if __name__ == '__main__':
 
                     if headline["sentence"] in article_text["content"]:
                         is_fact = True
-                    if similarity_value >= 0.64:
+                    if similarity_value >= 0.69:
                         is_fact = True
-                    elif similarity_value >= 0.6:
+                    elif similarity_value >= 0.58 and spacy_similarity >= 0.92:
+                        is_fact = True
+                    elif similarity_value >= 0.7:
                         good_sites_nr += 1
 
-                if similarity_value > 0.65 and is_fact == False:
+                if similarity_value > 0.67 and is_fact == False:
                     good_sites_nr += 1
                 print("SIMILARITY = "+str(similarity_value)+" - "+str(article_text["source"]))
                 if spacy_similarity != 0.0:
