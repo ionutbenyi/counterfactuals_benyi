@@ -4,8 +4,6 @@ from bs4 import BeautifulSoup
 import html2text
 from requests.exceptions import Timeout
 
-    # Similarity: sm model: 0.6 - good for facts; good for counterfacts = ?
-    #             lg model: ?
 import json
 import re
 def remove_tags(tag_name, soup):
@@ -38,18 +36,18 @@ def check_articles(keyword_sentence, original_sentence):
     uls=[]
     url_list = link_scraper.search_for_link(keyword_sentence)
     for u in url_list:
-        uls.append(u)
+        if u[-4:] != '.pdf':
+            uls.append(u)
     
     # print(uls)
     articles = []
-    print(original_sentence)
+    print(keyword_sentence)
     for i in range(len(uls)):
         article_text=""
         try:
             r=None
-            print(uls[i])
             try:
-                r = requests.get(uls[i], timeout = 2)
+                r = requests.get(uls[i])
             except Timeout:
                 print('The request timed out')
                 continue
