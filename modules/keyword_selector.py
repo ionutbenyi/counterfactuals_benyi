@@ -28,7 +28,6 @@ if __name__ == '__main__':
         print(" - "+ input_json["sentence"])
         print(" - "+ final_string)
         search_strings.append({"search": final_string, "original": input_json["sentence"], "truth_flag": input_json["truth_flag"]})
-        # search_strings.append({"search": input_json["sentence"], "original": input_json["sentence"], "truth_flag": input_json["truth_flag"]})
         
         count += 1
     with open('data/search_inputs.txt','w') as search_inputs_file:

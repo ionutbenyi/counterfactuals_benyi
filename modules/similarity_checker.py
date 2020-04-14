@@ -3,8 +3,6 @@ import scipy.spatial
 
 class SimilarityChecker:
 
-    
-
     def __init__(self):
         self.model = SentenceTransformer('bert-base-nli-mean-tokens')
 

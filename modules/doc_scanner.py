@@ -3,6 +3,7 @@ import json
 import math
 import spacy
 from modules.similarity_checker import *
+from modules.statistics_interpreter import StatisticsInterpreter
 
 trusted_sites = ['.reuters.', 'https://www.nytimes.com/', 
 'https://www.bbc.com/', 'https://www.ft.com/',
@@ -96,4 +97,7 @@ if __name__ == '__main__':
           
     print("Counterfacts: total="+str(count_counterfacts_total)+", found="+str(count_counterfacts_found))
     print("Facts: total="+str(count_facts_total)+", found="+str(count_facts_found))
-    print("Fake truths: "+str(fake_truths)+", fake fakes: "+str(fake_fakes))
+    
+    interpreter = StatisticsInterpreter()
+    interpreter.interpret_results(count_facts_found, count_facts_total - count_facts_found, count_counterfacts_found, count_counterfacts_total - count_counterfacts_found)
+    
