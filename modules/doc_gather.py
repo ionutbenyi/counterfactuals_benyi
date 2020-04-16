@@ -6,84 +6,90 @@ from requests.exceptions import Timeout
 
 import json
 import re
-def remove_tags(tag_name, soup):
-    return [val for val in soup if val != tag_name]
 
-def get_encoding(soup):
-    if soup and soup.meta:
-        encod = soup.meta.get('charset')
-        if encod == None:
-            encod = soup.meta.get('content-type')
+
+class DocGatherer:
+
+    def remove_tags(self, tag_name, soup):
+        return [val for val in soup if val != tag_name]
+
+    def get_encoding(self,soup):
+        if soup and soup.meta:
+            encod = soup.meta.get('charset')
             if encod == None:
-                content = soup.meta.get('content')
-                match = re.search('charset=(.*)', content)
-                if match:
-                    encod = match.group(1)
-                else:
-                    raise ValueError('unable to find encoding')
-    else:
-        raise ValueError('unable to find encoding')
-    return encod
+                encod = soup.meta.get('content-type')
+                if encod == None:
+                    content = soup.meta.get('content')
+                    match = re.search('charset=(.*)', content)
+                    if match:
+                        encod = match.group(1)
+                    else:
+                        raise ValueError('unable to find encoding')
+        else:
+            raise ValueError('unable to find encoding')
+        return encod
 
-def check_articles(keyword_sentence, original_sentence):
-    #weights = []
+    def check_articles(self, keyword_sentence, original_sentence):
+        
+        total_sites_nr = 0
+        link_scraper = WebScraper()
+        uls=[]
+        url_list = link_scraper.search_for_link(keyword_sentence)
 
-    #set Treshold = 0.95 - those with lower similarity are counterfacts
-    total_sites_nr = 0
+        for u in url_list:
+            if u[-4:] != '.pdf':
+                uls.append(u)
+        
 
-    link_scraper = WebScraper()
-
-    uls=[]
-    url_list = link_scraper.search_for_link(keyword_sentence)
-    for u in url_list:
-        if u[-4:] != '.pdf':
-            uls.append(u)
-    
-    # print(uls)
-    articles = []
-    print(keyword_sentence)
-    for i in range(len(uls)):
-        article_text=""
-        try:
-            r=None
+        articles = []
+        print(keyword_sentence)
+        for i in range(len(uls)):
+            article_text=""
             try:
-                r = requests.get(uls[i])
-            except Timeout:
-                print('The request timed out')
-                continue
-            soup = BeautifulSoup(r.content, 'html.parser')
+                r=None
+                try:
+                    r = requests.get(uls[i])
+                except Timeout:
+                    print('The request timed out')
+                    continue
+                soup = BeautifulSoup(r.content, 'html.parser')
 
-            try:
-                encd = get_encoding(soup)
-                # print(encd)
+                try:
+                    encd = self.get_encoding(soup)
+                    # print(encd)
+                except:
+                    encd = ""
+                if encd == 'utf-8' or encd == 'UTF-8' or encd == "":
+                    table = soup.findAll('p', attrs={})
+                    h = html2text.HTML2Text()
+                    h.ignore_links = True
+
+                    if table:
+                        for row in table:
+                            str_row = str(row)
+                            #article text per paragraphs
+                            row_text = h.handle(str_row)
+                            if not '**Contact us** at editors@time.com.' in row_text:
+                                article_text += row_text
+                            article_text = article_text.replace("\n\n\n\n","\n")
+                        total_sites_nr += 1
+                        articles.append({"source":uls[i], "content":article_text})
+                        print(uls[i])
             except:
-                encd = ""
-            if encd == 'utf-8' or encd == 'UTF-8' or encd == "":
-                table = soup.findAll('p', attrs={})
-                h = html2text.HTML2Text()
-                h.ignore_links = True
+                continue
 
-                if table:
-                    for row in table:
-                        str_row = str(row)
-                        #article text per paragraphs
-                        row_text = h.handle(str_row)
-                        if not '**Contact us** at editors@time.com.' in row_text:
-                            article_text += row_text
-                        article_text = article_text.replace("\n\n\n\n","\n")
-                    total_sites_nr += 1
-                    articles.append({"source":uls[i], "content":article_text})
-                    print(uls[i])
-        except:
-            # print("Article not opened!")
-            continue
+        return articles
 
-    return articles
+    def gather_articles_for_sentence(self, sentence, keyword_sentence):
+        articles = self.check_articles(keyword_sentence, sentence)
+        articles_json = {"sentence": sentence, "truth_flag":0, "texts": articles}
+        return articles_json
+
 
 if __name__ == '__main__':
 
+    doc_gatherer = DocGatherer()
     input_train_data=[]
-
     count_facts_total = 0
     count_facts_found = 0
     count_counterfacts_total = 0
@@ -96,7 +102,7 @@ if __name__ == '__main__':
     count = 1
     for train_sentence in input_train_data:
         print(count)
-        article_texts = check_articles(train_sentence["search"], train_sentence["original"])
+        article_texts = doc_gatherer.check_articles(train_sentence["search"], train_sentence["original"])
         art_final.append({"sentence": train_sentence["original"], "truth_flag":train_sentence["truth_flag"], "texts":article_texts})
         count += 1
 
