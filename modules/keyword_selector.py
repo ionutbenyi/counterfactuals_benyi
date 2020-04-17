@@ -10,9 +10,12 @@ class KeywordSelector:
         self.allow_logs = allow_logs
 
     def split_into_keywords(self, sentence, truth_flag = 0):
-        if len(sentence) < 30:
+        if len(sentence) > 80:
             split_string = self.parser.parse_sentence(sentence)
         else: split_string = sentence
+
+        if self.allow_logs:
+            print(split_string)
         split_json = {"search": split_string, "original": sentence, "truth_flag": truth_flag}
         return split_json
 
@@ -29,7 +32,7 @@ if __name__ == '__main__':
     keywd_selector = KeywordSelector(parser, True)
     count = 0
 
-    for i in range(103):
+    for i in range(101):
         input_json = input_train_data[i]
         print(count)
         

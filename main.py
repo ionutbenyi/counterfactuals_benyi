@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     oie_parser = OIEParser()
 
-    debug_logs = False
+    debug_logs = True
 
     keyword_selector = KeywordSelector(oie_parser, debug_logs)
     doc_gatherer = DocGatherer(debug_logs)

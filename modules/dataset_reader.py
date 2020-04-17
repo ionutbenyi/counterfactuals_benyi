@@ -16,7 +16,7 @@ if __name__ == '__main__':
     corpus_sentences=[]
     with open('train.csv', encoding="utf8") as csv_file:
         csv_reader = list(csv.reader(csv_file))
-        for i in range(105):
+        for i in range(13000):
             row = csv_reader[i]
             if(row[0]!=None and row[2] != "sentence"):  
                 corpus_sentences.append({"truth_flag":row[1], "sentence":row[2]})
