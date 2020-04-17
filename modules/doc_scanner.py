@@ -14,7 +14,7 @@ class DocScanner:
         'https://www.theguardian.com/', 'https://www.economist.com/',
         'https://www.dailymail.co.uk/', 'https://time.com/', 
         'medcitynews.com', 'books.google.','washingtonpost','.cnn.',
-        'thediplomat','webmd','bloomberg','.nhs.']
+        'thediplomat','webmd','bloomberg','.nhs.','theatlantic']
 
         self.allow_logs = allow_logs
         self.bert_sim_checker = bert_model
@@ -25,6 +25,8 @@ class DocScanner:
         self.count_counterfacts_found = 0
         self.fake_truths = 0
         self.fake_fakes = 0
+
+        self.error_data = 0
 
     def check_trusted(self, site):
         for option_site in self.trusted_sites:
@@ -53,7 +55,7 @@ class DocScanner:
         
         total_sites_nr = 0
         good_sites_nr = 0
-        
+        error_case = False
         is_fact = False
         for article_text in headline["texts"]:
             total_sites_nr += 1
@@ -75,8 +77,10 @@ class DocScanner:
                         is_fact = True
                     if similarity_value >= 0.69:
                         is_fact = True
+                        error_case = True
                     elif similarity_value >= 0.58 and spacy_similarity >= 0.84: 
                         is_fact = True
+                        # error_case = True
                     elif similarity_value >= 0.7:
                         good_sites_nr += 1
 
@@ -88,6 +92,8 @@ class DocScanner:
 
         if headline["truth_flag"] == "0":
             self.count_counterfacts_total += 1
+            if error_case:
+                self.error_data += 1
         else:
             self.count_facts_total += 1
         if is_fact:
@@ -119,6 +125,7 @@ class DocScanner:
     def print_statistics(self):
         print("Counterfacts: total="+str(self.count_counterfacts_total)+", found="+str(self.count_counterfacts_found))
         print("Facts: total="+str(self.count_facts_total)+", found="+str(self.count_facts_found))
+        print("Error headlines: "+str(self.error_data))
 
     def interpret_statistics(self):
         interpreter = StatisticsInterpreter()
@@ -130,7 +137,7 @@ if __name__ == '__main__':
     bert_model = SimilarityChecker()
     spacy_model = spacy.load("en_core_web_lg")
     doc_scanner = DocScanner(bert_model, spacy_model, True)
-    with open('data/set_data/articles1.txt') as inp_data:
+    with open('data/set_data/articles4.txt') as inp_data:
         articles = json.load(inp_data)
     for headline in articles:
         doc_scanner.scan_document(headline)
