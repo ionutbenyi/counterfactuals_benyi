@@ -10,6 +10,9 @@ import re
 
 class DocGatherer:
 
+    def __init__(self, allow_logs):
+        self.allow_logs = allow_logs
+
     def remove_tags(self, tag_name, soup):
         return [val for val in soup if val != tag_name]
 
@@ -42,7 +45,8 @@ class DocGatherer:
         
 
         articles = []
-        print(keyword_sentence)
+        if self.allow_logs:
+            print(keyword_sentence)
         for i in range(len(uls)):
             article_text=""
             try:
@@ -56,7 +60,6 @@ class DocGatherer:
 
                 try:
                     encd = self.get_encoding(soup)
-                    # print(encd)
                 except:
                     encd = ""
                 if encd == 'utf-8' or encd == 'UTF-8' or encd == "":
@@ -74,7 +77,8 @@ class DocGatherer:
                             article_text = article_text.replace("\n\n\n\n","\n")
                         total_sites_nr += 1
                         articles.append({"source":uls[i], "content":article_text})
-                        print(uls[i])
+                        if self.allow_logs:
+                            print(uls[i])
             except:
                 continue
 
@@ -88,7 +92,7 @@ class DocGatherer:
 
 if __name__ == '__main__':
 
-    doc_gatherer = DocGatherer()
+    doc_gatherer = DocGatherer(True)
     input_train_data=[]
     count_facts_total = 0
     count_facts_found = 0

@@ -5,9 +5,9 @@ from modules.oie_parser import OIEParser
 
 class KeywordSelector:
 
-    def __init__(self, oie_parser):
+    def __init__(self, oie_parser, allow_logs):
         self.parser = oie_parser
-
+        self.allow_logs = allow_logs
 
     def split_into_keywords(self, sentence, truth_flag = 0):
         if len(sentence) < 30:
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     search_strings = []
 
     parser = OIEParser()
-    keywd_selector = KeywordSelector(parser)
+    keywd_selector = KeywordSelector(parser, True)
     count = 0
 
     for i in range(103):
