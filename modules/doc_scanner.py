@@ -14,7 +14,7 @@ class DocScanner:
         'https://www.theguardian.com/', 'https://www.economist.com/',
         'https://www.dailymail.co.uk/', 'https://time.com/', 
         'medcitynews.com', 'books.google.','washingtonpost','.cnn.',
-        'thediplomat','webmd']
+        'thediplomat','webmd','bloomberg','.nhs.']
 
         self.allow_logs = allow_logs
         self.bert_sim_checker = bert_model
@@ -130,7 +130,7 @@ if __name__ == '__main__':
     bert_model = SimilarityChecker()
     spacy_model = spacy.load("en_core_web_lg")
     doc_scanner = DocScanner(bert_model, spacy_model, True)
-    with open('data/articles.txt') as inp_data:
+    with open('data/set_data/articles1.txt') as inp_data:
         articles = json.load(inp_data)
     for headline in articles:
         doc_scanner.scan_document(headline)
