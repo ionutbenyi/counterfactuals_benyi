@@ -48,7 +48,7 @@ class DocGatherer:
             try:
                 r=None
                 try:
-                    r = requests.get(uls[i])
+                    r = requests.get(uls[i], timeout=5)
                 except Timeout:
                     print('The request timed out')
                     continue

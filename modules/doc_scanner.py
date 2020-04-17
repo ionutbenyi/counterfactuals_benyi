@@ -12,7 +12,9 @@ class DocScanner:
         self.trusted_sites = ['.reuters.', 'https://www.nytimes.com/', 
         'https://www.bbc.com/', 'https://www.ft.com/',
         'https://www.theguardian.com/', 'https://www.economist.com/',
-        'https://www.dailymail.co.uk/', 'https://time.com/', 'medcitynews.com', 'books.google.','washingtonpost']
+        'https://www.dailymail.co.uk/', 'https://time.com/', 
+        'medcitynews.com', 'books.google.','washingtonpost','.cnn.',
+        'thediplomat']
         self.bert_sim_checker = bert_model
         self.nlp = spacy_model
         self.count_facts_total = 0
@@ -54,7 +56,7 @@ class DocScanner:
                         is_fact = True
                     if similarity_value >= 0.69:
                         is_fact = True
-                    elif similarity_value >= 0.58 and spacy_similarity >= 0.92:
+                    elif similarity_value >= 0.58 and spacy_similarity >= 0.84: #oringinal 0.92
                         is_fact = True
                     elif similarity_value >= 0.7:
                         good_sites_nr += 1

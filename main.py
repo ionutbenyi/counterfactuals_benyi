@@ -17,9 +17,6 @@ def detect_counterfactuals_from_sentence(sentence, keyword_selector, doc_gathere
 
 if __name__ == '__main__':
 
-    sentence = "Vitamin C cures the common cold"
-    print(sentence)
-
     oie_parser = OIEParser()
     keyword_selector = KeywordSelector(oie_parser)
     doc_gatherer = DocGatherer()
@@ -27,4 +24,11 @@ if __name__ == '__main__':
     spacy_model = spacy.load("en_core_web_lg")
     doc_scanner = DocScanner(bert_model, spacy_model)
 
-    detect_counterfactuals_from_sentence(sentence, keyword_selector, doc_gatherer, doc_scanner)
+    while(True):
+        sentence = input("Enter your sentence:\n")
+        if sentence == 'exit':
+            break
+        else:
+            detect_counterfactuals_from_sentence(sentence, keyword_selector, doc_gatherer, doc_scanner)
+
+    

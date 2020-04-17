@@ -10,7 +10,9 @@ class KeywordSelector:
 
 
     def split_into_keywords(self, sentence, truth_flag = 0):
-        split_string = self.parser.parse_sentence(sentence)
+        if len(sentence) < 30:
+            split_string = self.parser.parse_sentence(sentence)
+        else: split_string = sentence
         split_json = {"search": split_string, "original": sentence, "truth_flag": truth_flag}
         return split_json
 
@@ -26,7 +28,7 @@ if __name__ == '__main__':
     parser = OIEParser()
     keywd_selector = KeywordSelector(parser)
     count = 0
-    
+
     for i in range(103):
         input_json = input_train_data[i]
         print(count)
