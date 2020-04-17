@@ -32,14 +32,15 @@ if __name__ == '__main__':
     keywd_selector = KeywordSelector(parser, True)
     count = 0
 
-    for i in range(101):
-        input_json = input_train_data[i]
-        print(count)
-        
-        final_string = keywd_selector.split_into_keywords(input_json['sentence'], input_json["truth_flag"])
-        print(" - "+ input_json["sentence"])
-        print(" - "+ final_string["search"])
-        search_strings.append(final_string)
+    for i in range(301):
+        if i > 200:
+            input_json = input_train_data[i]
+            print(count)
+            
+            final_string = keywd_selector.split_into_keywords(input_json['sentence'], input_json["truth_flag"])
+            print(" - "+ input_json["sentence"])
+            print(" - "+ final_string["search"])
+            search_strings.append(final_string)
         
         count += 1
     with open('data/search_inputs.txt','w') as search_inputs_file:
