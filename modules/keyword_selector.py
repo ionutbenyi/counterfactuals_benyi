@@ -32,8 +32,8 @@ if __name__ == '__main__':
     keywd_selector = KeywordSelector(parser, True)
     count = 0
 
-    for i in range(301):
-        if i > 200:
+    for i in range(401):
+        if i > 300:
             input_json = input_train_data[i]
             print(count)
             
