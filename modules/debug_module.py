@@ -11,14 +11,14 @@ def debug(array):
 
 def change_truth_safe_facts(safe_fatcs):
     train_data = []
-    with open('data/corrected_set/set_data/articles10.txt') as inp_data:
+    with open('data/corrected_set/set_data/articles9.txt') as inp_data:
         train_data = json.load(inp_data)
     for fact in safe_fatcs:
         for data in train_data:
             if data["sentence"] == fact["sentence"]:
-                data["truth_flag"] = "1"
+                data["truth_flag"] = str(1)
                 break
-    with open('data/corrected_set/set_data/articles10.txt','w') as search_inputs_file:
+    with open('data/corrected_set/set_data/articles9.txt','w') as search_inputs_file:
         json.dump(train_data, search_inputs_file)
 
 if __name__ == '__main__':
