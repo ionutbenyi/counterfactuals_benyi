@@ -14,7 +14,7 @@ class DocScanner:
         'https://www.theguardian.com/', 'https://www.economist.com/',
         'https://www.dailymail.co.uk/', 'https://time.com/', 
         'medcitynews.com', 'books.google.','washingtonpost','.cnn.',
-        'thediplomat','webmd','bloomberg','.nhs.','theatlantic']
+        'thediplomat','webmd','bloomberg','.nhs.','theatlantic','.whitehouse.']
 
         self.allow_logs = allow_logs
         self.bert_sim_checker = bert_model
