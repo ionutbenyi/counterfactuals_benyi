@@ -56,7 +56,7 @@ class DocGatherer:
                 except Timeout:
                     print('The request timed out')
                     continue
-                soup = BeautifulSoup(r.content, 'html.parser')
+                soup = BeautifulSoup(r.content, 'html5lib')
 
                 try:
                     encd = self.get_encoding(soup)

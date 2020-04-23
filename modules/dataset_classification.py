@@ -34,7 +34,7 @@ if __name__ == '__main__':
     incorrect_jsons = []
     count = 0
 
-    for i in range(1000):
+    for i in range(1001):
         print(count)
         input_json = input_train_data[i]
         error_flag = detect_counterfactuals_from_sentence(input_json["sentence"], keyword_selector, doc_gatherer, doc_scanner)
